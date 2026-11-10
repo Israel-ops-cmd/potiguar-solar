@@ -32,7 +32,7 @@ src/
     photos.ts   # fotografias, créditos e URLs responsivas
   hooks/useMotion.ts  # todas as animações em um só lugar
   lib/          # eventos (CTA → formulário) e validação
-public/         # favicon, og-image, robots.txt, sitemap.xml, manifest
+public/         # favicon, og-image, robots.txt, manifest
 ```
 
 ## Integrações pendentes
@@ -45,7 +45,11 @@ Configure em `.env.local` (local) ou em **Vercel → Settings → Environment Va
 | `VITE_LEAD_ENDPOINT` | URL `https://` que recebe o lead via `POST` JSON (`nome`, `whatsapp`, `tipo`, `conta`, `origem`, `enviadoEm`). | O formulário valida e mostra o aviso de projeto demonstrativo. Nada é enviado. |
 | `VITE_SITE_URL` | URL pública usada no canonical/Open Graph. | Usa `https://potiguar-solar.vercel.app`. |
 
-O Instagram fica em `src/config/site.ts` (`instagramUrl`). Ao trocar o domínio, atualize também `index.html`, `public/robots.txt` e `public/sitemap.xml`.
+Os contatos exibidos (WhatsApp `(84) 00000-0000` e Instagram `@potiguarsolar.demo`) são **ilustrativos** e ficam em `demoContacts`, em `src/config/site.ts`. Eles não são links: ao clicar, aparece um aviso de que os canais estão em configuração.
+
+## Indexação
+
+Por ser um case fictício, a página usa `noindex` (meta tag e cabeçalho `X-Robots-Tag` em `vercel.json`), para não aparecer no Google como uma empresa real em Natal. Para um cliente real, remova os dois e volte a publicar um `sitemap.xml`.
 
 ## Fotografias
 
