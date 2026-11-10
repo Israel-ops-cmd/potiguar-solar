@@ -90,6 +90,8 @@
 .js-motion [data-reveal-img] { clip-path: inset(10% 0 10% 0 round 4px); }
 .js-motion [data-reveal-img] img { transform: scale(1.18); }
 .js-motion .split-line > span { display: inline-block; transform: translateY(105%); }
+.word-mask { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: 0.12em; margin-bottom: -0.12em; }
+.word-inner { display: inline-block; will-change: transform; }
 .split-line { display: block; overflow: hidden; padding-bottom: 0.08em; margin-bottom: -0.08em; }
 
 @media (prefers-reduced-motion: reduce) {

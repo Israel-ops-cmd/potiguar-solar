@@ -25,14 +25,13 @@ export function Solutions() {
             const reverse = i % 2 === 1;
             const photo = s.key === "residencial" ? photos.residencial : photos.comercial;
             return (
-              <article key={s.key} className="grid items-center gap-10 lg:grid-cols-12 lg:gap-16">
+              <article key={s.key} className="group grid items-center gap-10 lg:grid-cols-12 lg:gap-16">
                 <div className={`relative ${reverse ? "lg:order-2 lg:col-span-7 lg:col-start-6" : "lg:col-span-6"}`}>
                   <div data-reveal-img className="overflow-hidden rounded-[28px]">
                     <Photo
                       photo={photo}
                       sizes="(min-width: 1024px) 58vw, 100vw"
-                      className={`w-full ${reverse ? "aspect-[4/3] lg:aspect-[16/11]" : "aspect-[4/3] lg:aspect-[4/5]"}`}
-                      imgClassName="will-change-transform"
+                      className={`w-full transition-transform duration-[1400ms] ease-out-expo group-hover:scale-[1.035] ${reverse ? "aspect-[4/3] lg:aspect-[16/11]" : "aspect-[4/3] lg:aspect-[4/5]"}`}
                     />
                   </div>
                   <span className="absolute top-5 left-5 rounded-full bg-white/90 px-4 py-2 text-[0.92rem] font-semibold text-navy backdrop-blur sm:top-6 sm:left-6">

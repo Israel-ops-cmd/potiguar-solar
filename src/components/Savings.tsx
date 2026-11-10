@@ -6,7 +6,7 @@ import { goToSimulation } from "../lib/events";
 
 export function Savings() {
   return (
-    <section id="economia" className="grain relative overflow-hidden bg-navy py-24 text-white sm:py-32" aria-labelledby="economia-title">
+    <section id="economia" data-curtain className="grain relative overflow-hidden bg-navy py-24 text-white sm:py-32" aria-labelledby="economia-title">
       <div className="container-x relative grid gap-16 lg:grid-cols-12 lg:gap-12">
         <div className="lg:col-span-6">
           <h2 id="economia-title" className="t-xl" data-reveal>
@@ -17,9 +17,9 @@ export function Savings() {
             e a simulação é o primeiro passo para entender cada um deles no seu caso.
           </p>
 
-          <dl className="mt-12 divide-y divide-white/10 border-y border-white/10" data-stagger>
+          <dl className="mt-12 divide-y divide-white/10 border-y border-white/10" data-rows>
             {savingsFactors.map((f, i) => (
-              <div key={f.title} className="grid gap-2 py-6 sm:grid-cols-[3rem_1fr_1.4fr] sm:gap-6" data-reveal>
+              <div key={f.title} className="grid gap-2 py-6 sm:grid-cols-[3rem_1fr_1.4fr] sm:gap-6">
                 <span className="text-sm font-semibold tabular-nums text-sun">0{i + 1}</span>
                 <dt className="text-[1.15rem] font-semibold">{f.title}</dt>
                 <dd className="text-white/70">{f.text}</dd>

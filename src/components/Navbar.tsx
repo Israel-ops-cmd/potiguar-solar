@@ -30,6 +30,7 @@ export function Navbar() {
         solid ? "bg-navy/90 shadow-[0_10px_30px_-20px_rgba(0,0,0,.6)] backdrop-blur-xl" : "bg-transparent"
       }`}
     >
+      <div data-progress className="absolute bottom-0 left-0 h-[2px] w-full origin-left scale-x-0 bg-sun" aria-hidden="true" />
       <nav className="container-x flex h-[72px] items-center justify-between gap-6" aria-label="Principal">
         <a href="#topo" aria-label="Potiguar Solar, voltar ao início" onClick={() => setOpen(false)}>
           <Logo />
