@@ -7,11 +7,11 @@ import { goToSimulation } from "../lib/events";
 export function FinalCta() {
   const wa = whatsappLink("Olá! Quero solicitar um orçamento de energia solar.");
   return (
-    <section id="orcamento" className="grain relative isolate overflow-hidden bg-navy text-white" aria-labelledby="orcamento-title">
+    <section id="orcamento" data-curtain className="grain relative isolate overflow-hidden bg-navy text-white" aria-labelledby="orcamento-title">
       <div data-parallax className="absolute inset-[-10%_0] -z-10">
         <Photo photo={photos.ceu} sizes="100vw" className="h-full w-full" />
       </div>
-      <div className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(7,29,64,.75),rgba(7,29,64,.9))]" />
+      <div className="absolute inset-0 -z-10 bg-[linear-gradient(100deg,rgba(7,29,64,.9)_0%,rgba(7,29,64,.65)_50%,rgba(7,29,64,.35)_100%)]" />
 
       <div className="container-x py-28 sm:py-40">
         <h2 id="orcamento-title" className="t-xl max-w-5xl" data-reveal>
