@@ -8,28 +8,29 @@ export function HowItWorks() {
   return (
     <section id="como-funciona" className="relative bg-white py-24 sm:py-32" aria-labelledby="como-funciona-title">
       <div className="container-x">
-        <p className="section-index" data-reveal>
-          05 — Como funciona
-        </p>
-        <h2 id="como-funciona-title" className="display mt-5 max-w-4xl text-[clamp(2.1rem,4.6vw,3.6rem)] text-navy" data-reveal>
+        <h2 id="como-funciona-title" className="t-xl max-w-4xl text-navy" data-reveal>
           Do sol à tomada, e da tomada para a sua conta.
         </h2>
 
-        {/* Fluxo da energia */}
-        <div className="mt-16 lg:mt-20">
-          <h3 className="text-[0.85rem] font-semibold tracking-[0.18em] text-deep uppercase" data-reveal>
-            O caminho da energia
-          </h3>
-          <ol className="relative mt-8 grid grid-cols-2 gap-x-6 gap-y-10 lg:grid-cols-5 lg:gap-6" data-stagger>
-            <span data-draw-x className="absolute top-[11px] right-0 left-0 hidden h-px origin-left bg-navy/15 lg:block" aria-hidden="true" />
+        {/* Fluxo da energia: painel em azul profundo */}
+        <div className="mt-14 overflow-hidden rounded-[32px] bg-deep px-6 py-10 text-white sm:px-10 sm:py-14 lg:mt-20 lg:px-14 lg:py-16">
+          <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
+            <h3 className="t-md lg:col-span-5" data-reveal>
+              O caminho da energia
+            </h3>
+            <p className="max-w-md text-white/70 lg:col-span-5 lg:col-start-8" data-reveal>
+              Durante o dia, o imóvel consome a energia que gera. O que sobra vira crédito para a noite e para os meses seguintes.
+            </p>
+          </div>
+          <ol className="relative mt-12 grid grid-cols-2 gap-x-6 gap-y-10 lg:mt-16 lg:grid-cols-5 lg:gap-6" data-stagger>
+            <span data-draw-x className="absolute top-[11px] right-0 left-0 hidden h-px origin-left bg-white/25 lg:block" aria-hidden="true" />
             {energyFlow.map((s, i) => (
-              <li key={s.title} className="relative" data-reveal>
-                <span className="relative z-10 grid size-[22px] place-items-center rounded-full bg-white ring-2 ring-sun">
+              <li key={s.title} className={`relative ${i === energyFlow.length - 1 ? "col-span-2 lg:col-span-1" : ""}`} data-reveal>
+                <span className="relative z-10 grid size-[22px] place-items-center rounded-full bg-deep ring-2 ring-sun">
                   <span className="size-2 rounded-full bg-sun" />
                 </span>
-                <p className="mt-5 text-sm font-semibold tabular-nums text-mist">0{i + 1}</p>
-                <h4 className="mt-1 text-[1.25rem] font-semibold text-navy">{s.title}</h4>
-                <p className="mt-2 text-mist">{s.text}</p>
+                <h4 className="mt-5 text-[1.2rem] font-semibold">{s.title}</h4>
+                <p className="mt-2 text-white/70">{s.text}</p>
               </li>
             ))}
           </ol>
@@ -39,7 +40,7 @@ export function HowItWorks() {
         <div className="mt-28 grid gap-16 lg:mt-36 lg:grid-cols-12 lg:gap-12">
           <div className="lg:col-span-5">
             <div className="lg:sticky lg:top-28">
-              <h3 className="display text-[clamp(1.9rem,3.4vw,2.75rem)] text-navy" data-reveal>
+              <h3 className="t-lg text-navy" data-reveal>
                 Seis etapas, um só acompanhamento.
               </h3>
               <p className="mt-5 max-w-md text-[1.08rem] text-mist" data-reveal>
@@ -48,7 +49,7 @@ export function HowItWorks() {
               <button type="button" className="btn btn-sun mt-8" onClick={() => goToSimulation()} data-reveal>
                 Começar pela simulação <ArrowRight className="arrow size-5" aria-hidden="true" />
               </button>
-              <div data-reveal-img className="mt-12 overflow-hidden rounded-[4px]">
+              <div data-reveal-img className="mt-12 overflow-hidden rounded-[28px]">
                 <Photo photo={photos.tecnico} sizes="(min-width: 1024px) 38vw, 100vw" className="aspect-[3/2] w-full" />
               </div>
             </div>

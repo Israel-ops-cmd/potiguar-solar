@@ -10,49 +10,38 @@ export function Solutions() {
       <div className="container-x">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-3xl">
-            <p className="section-index" data-reveal>
-              02 — Soluções
-            </p>
-            <h2 id="solucoes-title" className="display mt-5 text-[clamp(2.1rem,4.6vw,3.6rem)] text-navy" data-reveal>
+            <h2 id="solucoes-title" className="t-xl text-navy" data-reveal>
               Um projeto para cada tipo de consumo.
             </h2>
           </div>
-          <p className="max-w-md text-[1.1rem] text-mist" data-reveal>
+          <p className="max-w-sm text-[1.08rem] text-mist lg:pb-3" data-reveal>
             Casa e empresa usam energia de jeitos diferentes. Por isso o caminho começa no mesmo lugar, a sua conta, mas
             o projeto é pensado para a sua rotina.
           </p>
         </div>
 
-        <div className="mt-20 space-y-28 lg:mt-28 lg:space-y-40">
+        <div className="mt-16 space-y-24 lg:mt-24 lg:space-y-36">
           {solutions.map((s, i) => {
             const reverse = i % 2 === 1;
             const photo = s.key === "residencial" ? photos.residencial : photos.comercial;
             return (
               <article key={s.key} className="grid items-center gap-10 lg:grid-cols-12 lg:gap-16">
-                <div className={`relative lg:col-span-7 ${reverse ? "lg:order-2" : ""}`}>
-                  <div data-reveal-img className="overflow-hidden rounded-[4px]">
+                <div className={`relative ${reverse ? "lg:order-2 lg:col-span-7 lg:col-start-6" : "lg:col-span-6"}`}>
+                  <div data-reveal-img className="overflow-hidden rounded-[28px]">
                     <Photo
                       photo={photo}
                       sizes="(min-width: 1024px) 58vw, 100vw"
-                      className="aspect-[4/3] w-full lg:aspect-[5/4]"
+                      className={`w-full ${reverse ? "aspect-[4/3] lg:aspect-[16/11]" : "aspect-[4/3] lg:aspect-[4/5]"}`}
                       imgClassName="will-change-transform"
                     />
                   </div>
-                  <span
-                    className={`display pointer-events-none absolute -bottom-10 hidden lg:block text-[clamp(5rem,14vw,11rem)] leading-none text-navy/[0.06] select-none ${
-                      reverse ? "left-0 lg:-left-6" : "right-0 lg:-right-6"
-                    }`}
-                    aria-hidden="true"
-                  >
-                    {s.index}
+                  <span className="absolute top-5 left-5 rounded-full bg-white/90 px-4 py-2 text-[0.92rem] font-semibold text-navy backdrop-blur sm:top-6 sm:left-6">
+                    {s.label}
                   </span>
                 </div>
 
-                <div className={`lg:col-span-5 ${reverse ? "lg:order-1" : ""}`}>
-                  <p className="eyebrow text-deep" data-reveal>
-                    {s.label}
-                  </p>
-                  <h3 className="display mt-5 text-[clamp(1.9rem,3.4vw,2.75rem)] text-navy" data-reveal>
+                <div className={`${reverse ? "lg:order-1 lg:col-span-4 lg:col-start-1" : "lg:col-span-5 lg:col-start-8"}`}>
+                  <h3 className="t-lg text-navy" data-reveal>
                     {s.title}
                   </h3>
                   <p className="mt-6 text-[1.08rem] text-mist" data-reveal>

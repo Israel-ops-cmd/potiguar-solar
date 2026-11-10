@@ -14,11 +14,8 @@ export function FinalCta() {
       <div className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(7,29,64,.75),rgba(7,29,64,.9))]" />
 
       <div className="container-x py-28 sm:py-40">
-        <p className="eyebrow text-sun" data-reveal>
-          Orçamento sem compromisso
-        </p>
-        <h2 id="orcamento-title" className="display mt-6 max-w-5xl text-[clamp(2.4rem,6.4vw,5rem)]" data-reveal>
-          Antes de pagar a próxima conta, descubra quanto dela <em>o sol pode cobrir.</em>
+        <h2 id="orcamento-title" className="t-xl max-w-5xl" data-reveal>
+          Antes de pagar a próxima conta, descubra quanto dela <em className="text-sun">o sol pode cobrir.</em>
         </h2>
         <p className="mt-8 max-w-xl text-[1.15rem] text-white/75" data-reveal>
           Leva poucos minutos. Você informa a média da conta e o tipo de imóvel, e recebe o retorno para dar o próximo passo.

@@ -2,41 +2,45 @@ import { Photo } from "./Photo";
 import { photos } from "../config/photos";
 import { differentials } from "../config/content";
 
+/** Diferenciais: fotografia panorâmica e texto em composição editorial, sem grade de cards. */
 export function Differentials() {
+  const [first, ...rest] = differentials;
   return (
     <section id="diferenciais" className="relative bg-paper py-24 sm:py-32" aria-labelledby="diferenciais-title">
-      <div className="container-x grid gap-16 lg:grid-cols-12 lg:gap-12">
-        <div className="lg:col-span-5">
-          <div className="lg:sticky lg:top-28">
-            <p className="section-index" data-reveal>
-              04 — Diferenciais
-            </p>
-            <h2 id="diferenciais-title" className="display mt-5 text-[clamp(2.1rem,4.6vw,3.6rem)] text-navy" data-reveal>
-              Clareza do primeiro contato até a <em>primeira geração.</em>
-            </h2>
-            <div data-reveal-img className="mt-10 hidden overflow-hidden rounded-[4px] lg:block">
-              <Photo photo={photos.instalacao} sizes="40vw" className="aspect-[4/3] w-full" />
-            </div>
+      <div className="container-x">
+        <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
+          <h2 id="diferenciais-title" className="t-xl text-navy lg:col-span-7" data-reveal>
+            Clareza do primeiro contato até a <em className="text-deep">primeira geração.</em>
+          </h2>
+          <div className="lg:col-span-4 lg:col-start-9" data-reveal>
+            <h3 className="text-[1.3rem] font-semibold text-navy">{first.title}</h3>
+            <p className="mt-2 text-[1.06rem] text-mist">{first.text}</p>
           </div>
         </div>
+      </div>
 
-        <ol className="lg:col-span-6 lg:col-start-7" data-stagger>
-          {differentials.map((d, i) => (
-            <li key={d.title} className="group grid grid-cols-[auto_1fr] gap-x-6 border-t border-navy/12 py-9 last:border-b sm:gap-x-10" data-reveal>
-              <span className="display text-[2.6rem] leading-none text-sun transition-transform duration-500 ease-out-expo group-hover:-translate-y-1 sm:text-[3.4rem]">
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              <div>
-                <h3 className="text-[1.35rem] leading-snug font-semibold text-navy">{d.title}</h3>
-                <p className="mt-2.5 text-[1.05rem] text-mist">{d.text}</p>
-              </div>
+      {/* Fotografia panorâmica, sangrando à esquerda */}
+      <div className="mt-14 pr-5 sm:pr-8 lg:mt-20 lg:pr-[max(3rem,calc((100vw-1320px)/2+3rem))]">
+        <div data-reveal-img className="overflow-hidden rounded-r-[28px] lg:rounded-r-[40px]">
+          <div data-parallax-inner className="will-change-transform">
+            <Photo photo={photos.instalacao} sizes="100vw" className="aspect-[4/3] w-full sm:aspect-[21/9]" />
+          </div>
+        </div>
+      </div>
+
+      <div className="container-x">
+        <ol className="mt-14 grid gap-x-12 gap-y-10 sm:grid-cols-2 lg:mt-20 lg:grid-cols-12" data-stagger>
+          {rest.map((d, i) => (
+            <li
+              key={d.title}
+              className={`border-t border-navy/15 pt-6 lg:col-span-3 ${i === 0 ? "lg:col-start-1" : ""}`}
+              data-reveal
+            >
+              <h3 className="text-[1.22rem] leading-snug font-semibold text-navy">{d.title}</h3>
+              <p className="mt-2.5 text-mist">{d.text}</p>
             </li>
           ))}
         </ol>
-
-        <div data-reveal-img className="overflow-hidden rounded-[4px] lg:hidden">
-          <Photo photo={photos.instalacao} sizes="100vw" className="aspect-[4/3] w-full" />
-        </div>
       </div>
     </section>
   );

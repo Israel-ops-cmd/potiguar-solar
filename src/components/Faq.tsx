@@ -10,10 +10,7 @@ export function Faq() {
     <section id="duvidas" className="relative bg-paper py-24 sm:py-32" aria-labelledby="duvidas-title">
       <div className="container-x grid gap-12 lg:grid-cols-12">
         <div className="lg:col-span-4">
-          <p className="section-index" data-reveal>
-            06 — Dúvidas
-          </p>
-          <h2 id="duvidas-title" className="display mt-5 text-[clamp(2.1rem,4.6vw,3.4rem)] text-navy" data-reveal>
+          <h2 id="duvidas-title" className="t-lg text-navy lg:sticky lg:top-28" data-reveal>
             Perguntas que todo mundo faz antes de decidir.
           </h2>
         </div>
