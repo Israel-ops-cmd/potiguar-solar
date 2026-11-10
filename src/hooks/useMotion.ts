@@ -21,19 +21,14 @@ export function useMotion() {
       // HERO: profundidade da imagem + sol + entrada do título por linhas
       const intro = gsap.timeline({ defaults: { ease } });
       intro
-        .fromTo("[data-hero-img]", { scale: 1.18 }, { scale: 1.04, duration: 2.4 }, 0)
-        .fromTo("[data-hero-sun]", { opacity: 0, yPercent: 25, scale: 0.8 }, { opacity: 0.7, yPercent: 0, scale: 1, duration: 2.6 }, 0.1)
+        .fromTo("[data-hero-frame]", { clipPath: "inset(0 0 0 100%)" }, { clipPath: "inset(0 0 0 0%)", duration: 1.6, ease: "expo.inOut", clearProps: "clipPath" }, 0)
+        .fromTo("[data-hero-img]", { scale: 1.16 }, { scale: 1.02, duration: 2.6 }, 0.2)
         .to("#hero-title .split-line > span", { y: 0, duration: 1.3, stagger: 0.12 }, 0.25)
         .fromTo("[data-hero-fade]", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 1.1, stagger: 0.1 }, 0.55)
-        .fromTo("[data-hero-form]", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 1.3 }, 0.7);
+        .fromTo("[data-hero-form]", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 1.3, clearProps: "transform" }, 0.9);
 
       gsap.to("[data-hero-img]", {
         yPercent: 9,
-        ease: "none",
-        scrollTrigger: { trigger: "#topo", start: "top top", end: "bottom top", scrub: true },
-      });
-      gsap.to("[data-hero-sun]", {
-        yPercent: 30,
         ease: "none",
         scrollTrigger: { trigger: "#topo", start: "top top", end: "bottom top", scrub: true },
       });
@@ -59,7 +54,12 @@ export function useMotion() {
       gsap.utils.toArray<HTMLElement>("[data-reveal-img]").forEach((wrap) => {
         const img = wrap.querySelector("img");
         const tl = gsap.timeline({ scrollTrigger: { trigger: wrap, start: "top 85%", once: true } });
-        tl.to(wrap, { clipPath: "inset(0% 0 0% 0 round 4px)", duration: 1.4, ease });
+        tl.to(wrap, {
+          clipPath: "inset(0% 0 0% 0 round 4px)",
+          duration: 1.4,
+          ease,
+          onComplete: () => void (wrap.style.clipPath = "none"),
+        });
         if (img) tl.to(img, { scale: 1, duration: 1.8, ease }, 0);
       });
 
@@ -67,6 +67,16 @@ export function useMotion() {
       gsap.utils.toArray<HTMLElement>("[data-parallax]").forEach((el) => {
         gsap.fromTo(el, { yPercent: -6 }, {
           yPercent: 6,
+          ease: "none",
+          scrollTrigger: { trigger: el.parentElement, start: "top bottom", end: "bottom top", scrub: true },
+        });
+      });
+
+      // Parallax leve dentro de molduras de imagem
+      gsap.utils.toArray<HTMLElement>("[data-parallax-inner]").forEach((el) => {
+        gsap.set(el, { scale: 1.12 });
+        gsap.fromTo(el, { yPercent: -4 }, {
+          yPercent: 4,
           ease: "none",
           scrollTrigger: { trigger: el.parentElement, start: "top bottom", end: "bottom top", scrub: true },
         });
@@ -86,7 +96,7 @@ export function useMotion() {
           scrollTrigger: { trigger: timeline, start: "top 70%", end: "bottom 70%", scrub: 0.6 },
         });
         gsap.utils.toArray<HTMLElement>("[data-timeline-item]").forEach((item) => {
-          gsap.fromTo(item, { opacity: 0.25 }, {
+          gsap.fromTo(item, { opacity: 0.4 }, {
             opacity: 1,
             duration: 0.6,
             scrollTrigger: { trigger: item, start: "top 72%", toggleActions: "play none none reverse" },

@@ -70,6 +70,14 @@ export const photos = {
     ratio: 6000 / 4000,
     color: "#594040",
   },
+  paineis: {
+    id: "photo-1613665813446-82a78c468a1d",
+    alt: "Painéis solares refletindo a luz do entardecer",
+    author: "Nuno Marques",
+    pageUrl: "https://unsplash.com/photos/black-and-white-solar-panels-0GbrjL3vZF4",
+    ratio: 5314 / 3596,
+    color: "#405959",
+  },
   ceu: {
     id: "photo-1463173904305-ba479d2123b7",
     alt: "Painel solar sob nuvens avermelhadas ao entardecer",

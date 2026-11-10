@@ -1,70 +1,73 @@
-import { ArrowDown, ArrowRight, MapPin } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Photo } from "./Photo";
 import { SplitLines } from "./SplitLines";
 import { LeadForm } from "./LeadForm";
 import { photos } from "../config/photos";
-import { site } from "../config/site";
 import { goToSimulation } from "../lib/events";
 
+/**
+ * Hero assimétrica: texto à esquerda, fotografia como objeto à direita
+ * (sangrando até a borda da tela) e formulário integrado sobre a borda da foto.
+ */
 export function Hero() {
   return (
-    <section id="topo" className="grain relative -mt-[72px] overflow-hidden bg-navy text-white" aria-labelledby="hero-title">
-      {/* Camada de imagem: zoom de entrada + parallax na rolagem */}
-      <div className="absolute inset-0" aria-hidden="false">
-        <div data-hero-img className="absolute inset-[-6%_0_-6%_0] will-change-transform">
-          <Photo photo={photos.hero} sizes="100vw" priority className="h-full w-full" />
+    <section id="topo" className="relative -mt-[72px] overflow-hidden bg-navy text-white" aria-labelledby="hero-title">
+      {/* Fotografia (desktop): coluna direita, do topo à base, com canto inferior arredondado */}
+      <div
+        data-hero-frame
+        className="absolute top-0 right-0 bottom-0 hidden w-[52%] overflow-hidden rounded-bl-[56px] lg:block"
+      >
+        <div data-hero-img className="absolute inset-[-8%_0] will-change-transform">
+          <Photo photo={photos.hero} sizes="52vw" priority className="h-full w-full" />
         </div>
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,29,64,.55)_0%,rgba(7,29,64,.35)_35%,rgba(7,29,64,.92)_78%,#071d40_100%)] lg:bg-[linear-gradient(100deg,rgba(7,29,64,.94)_0%,rgba(7,29,64,.78)_38%,rgba(7,29,64,.25)_68%,rgba(7,29,64,.55)_100%)]" />
-        {/* Sol: brilho que nasce no canto e acompanha a profundidade da imagem */}
-        <div
-          data-hero-sun
-          className="pointer-events-none absolute -top-[18vmax] right-[-14vmax] size-[52vmax] rounded-full opacity-70 mix-blend-screen"
-          style={{ background: "radial-gradient(circle, rgba(245,166,35,.55) 0%, rgba(245,166,35,.18) 35%, transparent 65%)" }}
-          aria-hidden="true"
-        />
+        <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-navy/70 to-transparent" aria-hidden="true" />
+        <div className="absolute inset-y-0 left-0 w-40 bg-gradient-to-r from-navy/45 to-transparent" aria-hidden="true" />
       </div>
 
-      <div className="container-x relative grid min-h-[100svh] grid-cols-1 items-end gap-12 pt-[128px] pb-14 lg:grid-cols-12 lg:items-center lg:gap-10 lg:pt-[150px] lg:pb-24">
-        <div className="lg:col-span-7 lg:pr-6">
-          <p data-hero-fade className="eyebrow text-sun">Energia solar para sua casa ou empresa</p>
-          <h1 id="hero-title" className="display mt-6 text-[clamp(2.6rem,6.6vw,4.9rem)] font-normal">
-            <SplitLines lines={["Sua energia pode", <>custar <em>menos.</em></>, "Comece pela simulação."]} />
+      <div className="container-x relative grid gap-10 pt-[112px] pb-16 lg:min-h-[max(100svh,760px)] lg:grid-cols-12 lg:grid-rows-[1fr_auto] lg:gap-x-8 lg:gap-y-0 lg:pt-[132px] lg:pb-14">
+        {/* Texto */}
+        <div className="flex flex-col justify-center lg:col-span-5 lg:row-span-2 lg:pr-4 lg:pb-[18vh]">
+          <h1 id="hero-title" className="t-hero">
+            <SplitLines lines={["Sua energia", <>pode custar <em className="text-sun">menos.</em></>]} />
+            <span className="mt-4 block text-[0.42em] leading-[1.15] font-[380] tracking-[-0.02em] text-white/90 lg:mt-5">
+              <SplitLines lines={["Comece pela simulação."]} />
+            </span>
           </h1>
-          <p data-hero-fade className="mt-7 max-w-[34rem] text-[1.12rem] leading-relaxed text-white/80 sm:text-[1.2rem]">
-            Descubra como a energia solar pode ajudar a reduzir seus gastos com eletricidade. Uma solução pensada para
-            quem busca mais eficiência e controle sobre o consumo de energia.
+          <p data-hero-fade className="lead mt-7 max-w-[30rem] text-white/75">
+            Energia solar para sua casa ou empresa. Descubra como ela pode reduzir seus gastos com eletricidade e dar mais
+            controle sobre o seu consumo.
           </p>
-          <div data-hero-fade className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <button type="button" className="btn btn-sun" onClick={() => goToSimulation()}>
+          <div data-hero-fade className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-6">
+            <button type="button" className="btn btn-sun !min-h-[58px] !px-8 text-[1.05rem]" onClick={() => goToSimulation()}>
               Quero simular minha economia <ArrowRight className="arrow size-5" aria-hidden="true" />
             </button>
-            <a href="#solucoes" className="btn btn-ghost-light">
-              Conhecer as soluções
+            <a href="#solucoes" className="group inline-flex min-h-[48px] items-center justify-center gap-2 font-semibold whitespace-nowrap text-white/85 hover:text-white">
+              <span className="link-underline">Conhecer as soluções</span>
             </a>
           </div>
-          <p data-hero-fade className="mt-10 hidden items-center gap-2 text-[0.95rem] text-white/60 lg:flex">
-            <MapPin className="size-4 text-sun" aria-hidden="true" /> Referência de atendimento: {site.region}
-          </p>
         </div>
 
-        <div className="lg:col-span-5">
+        {/* Fotografia (mobile e tablet): sangra até a borda direita */}
+        <div className="-mr-5 sm:-mr-8 lg:hidden">
+          <div data-hero-frame className="relative overflow-hidden rounded-l-[28px]">
+            <div data-hero-img className="absolute inset-[-8%_0] will-change-transform">
+              <Photo photo={photos.hero} sizes="100vw" className="h-full w-full" />
+            </div>
+            <div className="aspect-[4/5] sm:aspect-[16/11]" />
+          </div>
+        </div>
+
+        {/* Formulário integrado à borda da fotografia */}
+        <div className="relative z-10 -mt-40 sm:-mt-52 lg:col-span-7 lg:col-start-6 lg:row-start-2 lg:mt-0 lg:self-end">
           <div
             id="simulacao"
             data-hero-form
-            className="relative rounded-[28px] bg-navy/75 p-6 shadow-[0_40px_80px_-30px_rgba(0,0,0,.7)] ring-1 ring-white/12 backdrop-blur-xl sm:p-8"
+            className="rounded-[26px] bg-navy/92 p-6 shadow-[0_40px_90px_-30px_rgba(0,0,0,.75)] ring-1 ring-white/10 backdrop-blur-xl sm:p-8 lg:max-w-[600px]"
           >
             <LeadForm />
           </div>
         </div>
       </div>
-
-      <a
-        href="#beneficios"
-        className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 items-center gap-2 text-[0.8rem] tracking-[0.2em] text-white/55 uppercase hover:text-white lg:flex"
-        aria-label="Rolar para os benefícios"
-      >
-        <ArrowDown className="size-4 animate-bounce motion-reduce:animate-none" aria-hidden="true" /> Role
-      </a>
     </section>
   );
 }

@@ -21,8 +21,16 @@ export const integrations = {
   whatsappNumber: ((env.VITE_WHATSAPP_NUMBER as string | undefined) ?? "").replace(/\D/g, ""),
   /** PENDENTE: endpoint que recebe o lead via POST JSON. */
   leadEndpoint: (env.VITE_LEAD_ENDPOINT as string | undefined) ?? "",
-  /** PENDENTE: perfil do Instagram (ex.: https://instagram.com/potiguarsolar). */
-  instagramUrl: "",
+};
+
+/**
+ * Contatos ILUSTRATIVOS, exibidos apenas para composição visual.
+ * Não são links ativos: ao clicar, o visitante vê um aviso de que os canais estão em configuração.
+ */
+export const demoContacts = {
+  whatsapp: "(84) 00000-0000",
+  instagram: "@potiguarsolar.demo",
+  notice: "Os canais de atendimento estão em configuração para esta demonstração.",
 };
 
 export const hasWhatsApp = integrations.whatsappNumber.length >= 12;

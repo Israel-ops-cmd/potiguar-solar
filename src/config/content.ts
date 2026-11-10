@@ -13,7 +13,7 @@ export const benefits = [
     text: "Com parte da sua energia vindo do sol, reajustes e bandeiras tarifárias pesam menos no fim do mês.",
   },
   {
-    title: "Créditos que não se perdem",
+    title: "Créditos para usar depois",
     text: "O excedente vai para a rede e vira crédito de energia, usado à noite, em dias nublados ou nos meses seguintes.",
   },
   {

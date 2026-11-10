@@ -90,7 +90,7 @@ export function LeadForm() {
 
   if (status === "pending" || status === "success") {
     return (
-      <div className="flex min-h-[420px] flex-col justify-center" role="status" aria-live="polite">
+      <div className="flex min-h-[300px] flex-col justify-center" role="status" aria-live="polite">
         {status === "success" ? (
           <>
             <CircleCheck className="size-10 text-sun" aria-hidden="true" />
@@ -102,10 +102,12 @@ export function LeadForm() {
         ) : (
           <>
             <Info className="size-10 text-sun" aria-hidden="true" />
-            <h3 className="display mt-5 text-[2rem] leading-tight text-white">Formulário validado. Nenhum dado foi enviado.</h3>
+            <h3 className="display mt-5 text-[1.9rem] leading-tight font-[380] text-white">
+              Obrigado, {fields.nome.trim().split(" ")[0]}.
+            </h3>
             <p className="mt-3 text-white/75">
-              Esta é uma página demonstrativa e a Potiguar Solar é uma marca fictícia. A integração com o destino dos
-              contatos ainda não foi configurada, então suas informações não saíram do seu navegador.
+              O envio de simulações está em configuração para esta demonstração, então seus dados não foram enviados e
+              ficaram apenas no seu navegador.
             </p>
           </>
         )}
@@ -114,24 +116,26 @@ export function LeadForm() {
           className="btn btn-ghost-light mt-8 self-start"
           onClick={() => {
             setStatus("idle");
+            setErrors({});
             setFields({ nome: "", whatsapp: "", tipo: "", conta: "" });
           }}
         >
-          Fazer nova simulação
+          Voltar ao formulário
         </button>
       </div>
     );
   }
 
   return (
-    <form ref={formRef} noValidate onSubmit={onSubmit} aria-labelledby={`${uid}-title`} className="space-y-4">
-      <div>
-        <p className="text-[0.8rem] font-semibold tracking-[0.16em] text-sun uppercase">Simulação gratuita</p>
-        <h2 id={`${uid}-title`} className="display mt-2 text-[1.85rem] leading-[1.08] text-white sm:text-[2.1rem]">
-          Descubra seu potencial de economia.
+    <form ref={formRef} noValidate onSubmit={onSubmit} aria-labelledby={`${uid}-title`}>
+      <div className="mb-6 flex items-end justify-between gap-4">
+        <h2 id={`${uid}-title`} className="display text-[1.7rem] leading-[1.05] font-[380] text-white sm:text-[1.95rem]">
+          Descubra seu potencial <span className="whitespace-nowrap">de economia.</span>
         </h2>
+        <span className="hidden shrink-0 rounded-full bg-sun/15 px-3 py-1 text-[0.82rem] font-semibold text-sun sm:inline">Gratuito</span>
       </div>
 
+      <div className="grid gap-4 sm:grid-cols-2">
       <div>
         <label htmlFor={`${uid}-nome`} className="mb-1.5 block text-[0.92rem] font-medium text-white/85">
           Nome
@@ -216,8 +220,9 @@ export function LeadForm() {
         </select>
         {msg("conta")}
       </div>
+      </div>
 
-      <button type="submit" className="btn btn-sun mt-2 w-full" disabled={status === "loading"} aria-busy={status === "loading"}>
+      <button type="submit" className="btn btn-sun mt-6 w-full" disabled={status === "loading"} aria-busy={status === "loading"}>
         {status === "loading" ? (
           <>
             <LoaderCircle className="size-5 animate-spin" aria-hidden="true" /> Enviando…
@@ -230,13 +235,13 @@ export function LeadForm() {
       </button>
 
       {status === "error" && (
-        <p role="alert" className="flex items-start gap-2 rounded-xl bg-[#ff8a80]/15 p-3 text-[0.92rem] text-[#ffd2cc]">
+        <p role="alert" className="mt-4 flex items-start gap-2 rounded-xl bg-[#ff8a80]/15 p-3 text-[0.92rem] text-[#ffd2cc]">
           <CircleAlert className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
           Não conseguimos enviar agora. Verifique sua conexão e tente de novo em instantes.
         </p>
       )}
 
-      <p className="text-[0.85rem] leading-snug text-white/55">
+      <p className="mt-4 text-[0.88rem] leading-snug text-white/60">
         Toda simulação é uma estimativa e depende de avaliação técnica do imóvel. Seus dados são usados apenas para
         retornar o contato.
       </p>
