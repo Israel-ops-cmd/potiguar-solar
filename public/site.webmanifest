@@ -1,0 +1,13 @@
+{
+  "name": "Potiguar Solar",
+  "short_name": "Potiguar Solar",
+  "lang": "pt-BR",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#F4F5F7",
+  "theme_color": "#071D40",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" },
+    { "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}
