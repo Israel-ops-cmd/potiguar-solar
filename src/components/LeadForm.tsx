@@ -30,7 +30,7 @@ function validate(f: Fields): Errors {
  * INTEGRAÇÃO PENDENTE: enquanto VITE_LEAD_ENDPOINT não estiver configurado,
  * nenhum dado é enviado. O visitante vê um aviso claro de projeto demonstrativo.
  */
-export function LeadForm() {
+export function LeadForm({ stacked = false }: { stacked?: boolean }) {
   const uid = useId();
   const formRef = useRef<HTMLFormElement>(null);
   const [fields, setFields] = useState<Fields>({ nome: "", whatsapp: "", tipo: "", conta: "" });
@@ -135,7 +135,7 @@ export function LeadForm() {
         <span className="hidden shrink-0 rounded-full bg-sun/15 px-3 py-1 text-[0.82rem] font-semibold text-sun sm:inline">Gratuito</span>
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className={`grid gap-4 ${stacked ? "" : "sm:grid-cols-2"}`}>
       <div>
         <label htmlFor={`${uid}-nome`} className="mb-1.5 block text-[0.92rem] font-medium text-white/85">
           Nome
