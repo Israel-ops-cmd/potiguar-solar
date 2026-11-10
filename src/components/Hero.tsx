@@ -18,7 +18,7 @@ export function Hero() {
         className="absolute top-0 right-0 bottom-0 hidden w-[52%] overflow-hidden rounded-bl-[56px] lg:block"
       >
         <div data-hero-img className="absolute inset-[-8%_0] will-change-transform">
-          <Photo photo={photos.hero} sizes="52vw" priority className="h-full w-full" />
+          <Photo photo={photos.hero} sizes="(min-width: 1024px) 52vw, 100vw" className="h-full w-full" />
         </div>
         <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-navy/70 to-transparent" aria-hidden="true" />
         <div className="absolute inset-y-0 left-0 w-40 bg-gradient-to-r from-navy/45 to-transparent" aria-hidden="true" />
@@ -51,7 +51,7 @@ export function Hero() {
         <div className="-mr-5 sm:-mr-8 lg:hidden">
           <div data-hero-frame className="relative overflow-hidden rounded-l-[28px]">
             <div data-hero-img className="absolute inset-[-8%_0] will-change-transform">
-              <Photo photo={photos.hero} sizes="100vw" className="h-full w-full" />
+              <Photo photo={photos.hero} sizes="(min-width: 1024px) 52vw, 100vw" className="h-full w-full" />
             </div>
             <div className="aspect-[4/5] sm:aspect-[16/11]" />
           </div>
