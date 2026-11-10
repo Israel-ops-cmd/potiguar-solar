@@ -28,7 +28,6 @@ export const photos = {
     pageUrl: "https://unsplash.com/photos/a-solar-panel-on-a-roof-with-a-rainbow-in-the-background-0SyvPKyZc-M",
     ratio: 1.5,
     color: "#3d4a5a",
-    focus: "35% 50%",
   },
   residencial: {
     id: "photo-1630608354129-6a7704150401",

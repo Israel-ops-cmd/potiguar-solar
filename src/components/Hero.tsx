@@ -13,10 +13,10 @@ export function Hero() {
       {/* Camada de imagem: zoom de entrada + parallax na rolagem */}
       <div className="absolute inset-0">
         <div data-hero-img className="absolute inset-[-6%_0_-6%_0] will-change-transform">
-          <Photo photo={photos.hero} sizes="100vw" priority className="h-full w-full" imgClassName="-scale-x-100" />
+          <Photo photo={photos.hero} sizes="100vw" priority className="h-full w-full" imgClassName="-scale-x-100 !object-[8%_50%] lg:!object-[35%_50%]" />
         </div>
         <div
-          className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,29,64,.7)_0%,rgba(7,29,64,.45)_30%,rgba(7,29,64,.9)_70%,#071d40_100%)] lg:bg-[linear-gradient(100deg,rgba(7,29,64,.96)_0%,rgba(7,29,64,.82)_36%,rgba(7,29,64,.28)_66%,rgba(7,29,64,.5)_100%)]"
+          className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,29,64,.82)_0%,rgba(7,29,64,.6)_35%,rgba(7,29,64,.92)_70%,#071d40_100%)] lg:bg-[linear-gradient(100deg,rgba(7,29,64,.96)_0%,rgba(7,29,64,.82)_36%,rgba(7,29,64,.28)_66%,rgba(7,29,64,.5)_100%)]"
           aria-hidden="true"
         />
         {/* Sol: brilho que nasce no canto e acompanha a profundidade da imagem */}
